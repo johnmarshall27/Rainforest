@@ -1,6 +1,12 @@
 <h1>Your Products</h1>
 <p>Find me in app/views/products/index.html.erb</p>
-<% @products.each do |f| %>
-<%= f.formatted_price %>
+
+<%= form_tag products_path, method: :get, authentication: false, id: 'search-form' do %>
+<%= text_field_tag :search, params[:search] %>
+<%= submit_tag "search" %>
 <% end %>
+
+<div id="products">
+  <%= render partial: "product", collection: @products %>
+</div>
 
